@@ -1,7 +1,7 @@
 <div class="alpheios-panel auk" data-component="alpheios-panel">
   <div class="alpheios-panel__wrapper">
     <div class="alpheios-panel__header">
-        <div class="alpheios-panel__header-title"><img class="alpheios-panel__header-logo" src="logo.png"></div>
+        <div class="alpheios-panel__header-title"><img class="alpheios-panel__header-logo" src="logo.png"/></div>
         <span id="alpheios-panel-show-open" class="alpheios-panel__header-action-btn" uk-icon="icon: shrink; ratio: 2"></span>
         <span id="alpheios-panel-show-fw" class="alpheios-panel__header-action-btn" uk-icon="icon: expand; ratio: 2"></span>
         <span id="alpheios-panel-hide" class="alpheios-panel__header-action-btn" uk-icon="icon: close; ratio: 2"></span>

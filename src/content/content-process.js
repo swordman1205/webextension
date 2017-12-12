@@ -89,7 +89,11 @@ export default class ContentProcess {
     UIkit.use(UIkITIconts)
 
 // components can be called from the imported UIkit reference
-    UIkit.notification('Hello world.')
+    try {
+      UIkit.notification('Hello world.')
+    } catch(e) {
+      console.error(`Unable to initialize UIKit ${e}`)
+    }
   }
 
   static get settingValues () {
@@ -128,6 +132,7 @@ export default class ContentProcess {
 
   static loadTemplate (template) {
     let container = document.createElement('div')
+    debugger
     document.body.insertBefore(container, document.body.firstChild)
     container.outerHTML = template
   }
@@ -174,7 +179,7 @@ export default class ContentProcess {
       return messageObject
     } catch (error) {
       console.error(`Word data request failed: ${error.value}`)
-      this.showMessage(`<p>Sorry, your word you requested failed:<br><strong>${error.value}</strong></p>`)
+      this.showMessage(`<p>Sorry, your word you requested failed:<br/><strong>${error.value}</strong></p>`)
     }
   }
 
@@ -185,14 +190,14 @@ export default class ContentProcess {
       if (lexeme.meaning.shortDefs.length > 0) {
         shortDefsText += `<h3>Lemma: ${lexeme.lemma.word}</h3>\n`
         for (let shortDef of lexeme.meaning.shortDefs) {
-          shortDefsText += `${shortDef.text}<br>\n`
+          shortDefsText += `${shortDef.text}<br/>\n`
         }
       }
 
       if (lexeme.meaning.fullDefs.length > 0) {
         fullDefsText += `<h3>Lemma: ${lexeme.lemma.word}</h3>\n`
         for (let fullDef of lexeme.meaning.fullDefs) {
-          fullDefsText += `${fullDef.text}<br>\n`
+          fullDefsText += `${fullDef.text}<br/>\n`
         }
       }
     }
