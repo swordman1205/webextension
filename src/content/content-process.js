@@ -2,6 +2,7 @@
 import {Constants} from 'alpheios-data-models'
 import {AlpheiosTuftsAdapter} from 'alpheios-morph-client'
 import {Lexicons} from 'alpheios-lexicon-client'
+import {AlpheiosLemmaAdapter} from 'alpheios-lemma-client'
 import {ObjectMonitor as ExpObjMon} from 'alpheios-experience'
 import Message from '../lib/messaging/message/message'
 import MessagingService from '../lib/messaging/service'
@@ -21,6 +22,7 @@ export default class ContentProcess {
     this.resourceOptions = new ResourceOptions(browser.storage.sync.get, browser.storage.sync.set)
     this.messagingService = new MessagingService()
     this.maAdapter = new AlpheiosTuftsAdapter() // Morphological analyzer adapter, with default arguments
+    this.lemmaAdapter = new AlpheiosLemmaAdapter()
     this.ui = new UIController(this.state, this.options, this.resourceOptions, browser.runtime.getManifest())
   }
 
@@ -161,6 +163,7 @@ export default class ContentProcess {
             htmlSelector: htmlSelector,
             uiController: this.ui,
             maAdapter: this.maAdapter,
+            lemmaAdapter: this.lemmaAdapter,
             lexicons: Lexicons,
             resourceOptions: this.resourceOptions,
             langOpts: { [Constants.LANG_PERSIAN]: { lookupMorphLast: true } } // TODO this should be externalized
